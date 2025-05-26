@@ -3,7 +3,7 @@ LIBFT := libft/libft.a
 HEADER := ft_printf.h
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:%.c=%.o)
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -I./libft/
 
 all: $(NAME)
 
