@@ -1,0 +1,8 @@
+# Compiled binaries
+a.out
+**/*.o
+**/*.a
+
+# Editor files
+**/*.swp
+**/.vscode/
