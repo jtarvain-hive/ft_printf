@@ -1,17 +1,16 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void	convert_char(char **str, int *count, va_list var)
+void	convert_char(int *count, va_list var)
 {
     char    c;
 
     c = (char)va_arg(var, int);
     ft_putchar_fd(c, 1);
     (*count)++;
-    (*str)++;
 }
 
-void	convert_str(char **str, int *count, va_list var)
+void	convert_str(int *count, va_list var)
 {
     char    *s;
 
@@ -22,10 +21,9 @@ void	convert_str(char **str, int *count, va_list var)
         (*count)++;
         s++;
     }
-    (*str)++;
 }
 
-void    convert_decimal(char **str, int *count, va_list var)
+void    convert_decimal(int *count, va_list var)
 {
     int number;
     int space;
@@ -37,13 +35,12 @@ void    convert_decimal(char **str, int *count, va_list var)
     else if (space == 0)
     {
         (*count)++;
-        (*str)++;
     }
     (*count) += space;
     ft_putnbr_fd(number, 1);
 }
 
-void    convert_unsigned(char **str, int *count, va_list var)
-{
+// void    convert_unsigned(char *str, int *count, va_list var)
+// {
 
-}
+// }

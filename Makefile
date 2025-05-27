@@ -21,8 +21,16 @@ $(LIBFT):
 %.o: %.c $(HEADER)
 	cc $(CFLAGS) -c $< -o $@
 
+test: $(NAME) tests.c
+	cc tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o tests
+	./tests
+
+debug: $(NAME) tests.c
+	gcc -g tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o debug
+	gdb debug
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) tests
 	make -C libft/ clean
 
 fclean: clean

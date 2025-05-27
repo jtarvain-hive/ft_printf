@@ -8,11 +8,11 @@
 
 int     ft_printf(const char *str, ...);
 int     digit_length(int nbr);
-void	parse_specifier(char **str, int *count, va_list var);
-void	convert_char(char **str, int *count, va_list var);
-void    convert_decimal(char **str, int *count, va_list var);
-void    convert_unsigned(char **str, int *count, va_list var);
-void    convert_ptr(char **str, int *count, va_list var);
-void	convert_str(char **str, int *count, va_list var);
+void	parse_specifier(const char **str, int *count, va_list var);
+void	convert_char(int *count, va_list var);
+void    convert_decimal(int *count, va_list var);
+void    convert_unsigned(int *count, va_list var);
+void    convert_ptr(int *count, va_list var);
+void	convert_str(int *count, va_list var);
 
 #endif

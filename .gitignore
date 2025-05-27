@@ -1,5 +1,7 @@
 # Compiled binaries
 a.out
+tests
+debug
 **/*.o
 **/*.a
 

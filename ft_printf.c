@@ -8,7 +8,7 @@ int	ft_printf(const char *str, ...)
 
 	if (!*str)
 	{
-		return ;
+		return (0);
 	}
 	else
 	{
