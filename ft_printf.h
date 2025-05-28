@@ -11,8 +11,10 @@ int     digit_length(int nbr);
 void	parse_specifier(const char **str, int *count, va_list var);
 void	convert_char(int *count, va_list var);
 void    convert_decimal(int *count, va_list var);
-void    convert_unsigned(int *count, va_list var);
 void    convert_ptr(int *count, va_list var);
 void	convert_str(int *count, va_list var);
+void    convert_unsigned(int *count, va_list var);
+void    ft_putunsigned_fd(unsigned int n, int fd);
+int		unsigned_length(unsigned int nbr);
 
 #endif

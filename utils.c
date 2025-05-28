@@ -15,7 +15,7 @@ void	parse_specifier(const char **str, int *count, va_list var)
 	else if (**str == 'd' || **str == 'i')
 		convert_decimal(count, var);
 	else if (**str == 'u')
-		return ;
+		convert_unsigned(count, var);
 	else if (**str == 'x')
 		return ;
 	else if (**str == 'X')
@@ -28,13 +28,26 @@ void	parse_specifier(const char **str, int *count, va_list var)
 		(*str)++;
 }
 
-int digit_length(int nbr)
+int	digit_length(int nbr)
 {
     int space;
 
     space = 0;
     if (nbr < 0)
         nbr *= -1;
+    while (nbr)
+    {
+        nbr /= 10;
+        space++;
+    }
+    return (space);
+}
+
+int	unsigned_length(unsigned int nbr)
+{
+    unsigned int	space;
+
+    space = 0;
     while (nbr)
     {
         nbr /= 10;

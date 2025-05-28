@@ -22,7 +22,7 @@ int	ft_printf(const char *str, ...)
 				ft_putchar_fd(*str++, 1);
 				count++;
 			}
+		va_end(args);
 	}
-	va_end(args);
 	return (count);
 }

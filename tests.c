@@ -4,19 +4,109 @@
 
 int main(void)
 {
-    int original;
-    int ftprintf;
+	int				original_count;
+	int				new_count;
+	int				wins;
+	unsigned int	handshakes;
+	char			*name = "Joonatan";
 
-    // String test
-    printf("input: Hello world\n\n");
-    original = printf("Hello World\n");
-    ftprintf = ft_printf("Hello World\n");
-    printf("original:%d\nft_printf:%d\n\n", original, ftprintf);
+	// String tests
+	printf("-----------");
+	printf("\ninput: Hello World!\n\n");
+	printf("original: ");
+	original_count = printf("Hello World!\n");
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Hello World!\n");
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
 
-    // Decimal test
-    printf("input: Hello world\n\n");
-    original = printf("Hello World\n");
-    ftprintf = ft_printf("Hello World\n");
-    printf("original: %d\nft_printf: %d\n\n", original, ftprintf);
-    return (0);
+	printf("\ninput: Hello %%s\n\n");
+	printf("original: ");
+	original_count = printf("Hello %s\n", name);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Hello %s\n", name);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	printf("\ninput: Hello %%c\n\n");
+	printf("original: ");
+	original_count = printf("Hello %c\n", name[0]);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Hello %c\n", name[0]);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	printf("\ninput: Hello %%s%%c%%i (no spaces, diff variables)\n\n");
+	printf("original: ");
+	original_count = printf("Hello %s%c%i\n", name, name[0], new_count);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Hello %s%c%i\n", name, name[0], new_count);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	// Decimal tests
+	wins = 420;
+	printf("\ninput: wins this year: %%d\n\n");
+	printf("original: ");
+	original_count = printf("Wins this year: %d\n", wins);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Wins this year: %d\n", wins);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	wins = -420;
+	printf("\ninput: wins this year: %%d\n\n");
+	printf("original: ");
+	original_count = printf("Wins this year: %d\n", wins);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Wins this year: %d\n", wins);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	wins = 0;
+	printf("\ninput: wins this year: %%d\n\n");
+	printf("original: ");
+	original_count = printf("Wins this year: %d\n", wins);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("Wins this year: %d\n", wins);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	//Unsigned int test
+	handshakes = 0;
+	printf("\ninput: handshakes for wins this year: %%u\n\n");
+	printf("original: ");
+	original_count = printf("handshakes for wins this year: %u\n", handshakes);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("handshakes for wins this year: %u\n", handshakes);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	handshakes = UINT_MAX;
+	printf("\ninput: handshakes for wins this year: %%u\n\n");
+	printf("original: ");
+	original_count = printf("handshakes for wins this year: %u\n", handshakes);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("handshakes for wins this year: %u\n", handshakes);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+	return (0);
 }

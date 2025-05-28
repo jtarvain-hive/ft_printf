@@ -30,7 +30,7 @@ debug: $(NAME) tests.c
 	gdb debug
 
 clean:
-	rm -f $(OBJS) tests
+	rm -f $(OBJS) tests debug
 	make -C libft/ clean
 
 fclean: clean
@@ -39,4 +39,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test debug

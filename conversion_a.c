@@ -25,8 +25,8 @@ void	convert_str(int *count, va_list var)
 
 void    convert_decimal(int *count, va_list var)
 {
-    int number;
-    int space;
+    int	number;
+    int	space;
 
     number = va_arg(var, int);
     space = digit_length(number);
@@ -40,7 +40,18 @@ void    convert_decimal(int *count, va_list var)
     ft_putnbr_fd(number, 1);
 }
 
-// void    convert_unsigned(char *str, int *count, va_list var)
-// {
+// TODO: finish putunsigned
+void    convert_unsigned(int *count, va_list var)
+{
+    unsigned int	number;
+    int				space;
 
-// }
+    number = va_arg(var, unsigned int);
+    space = unsigned_length(number);
+    if (space == 0)
+    {
+        (*count)++;
+    }
+    (*count) += space;
+    ft_putunsigned_fd(number, 1);
+}
