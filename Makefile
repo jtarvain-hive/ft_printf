@@ -2,7 +2,7 @@ SRCS := ft_printf.c\
 		utils.c\
 		conversion_a.c\
 		conversion_b.c
-		
+
 NAME := libftprintf.a
 LIBFT := libft/libft.a
 HEADER := ft_printf.h

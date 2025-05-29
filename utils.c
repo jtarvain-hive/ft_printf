@@ -59,6 +59,7 @@ int	unsigned_length(unsigned int nbr)
 {
 	unsigned int	space;
 
+<<<<<<< Updated upstream
 	space = 0;
 	while (nbr)
 	{
@@ -67,3 +68,13 @@ int	unsigned_length(unsigned int nbr)
 	}
 	return (space);
 }
+=======
+    space = 0;
+    while (nbr)
+    {
+        nbr /= 10;
+        space++;
+    }
+    return	(space);
+}
+>>>>>>> Stashed changes
