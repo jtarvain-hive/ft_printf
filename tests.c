@@ -86,7 +86,7 @@ int main(void)
 	printf("ftprintf: %d\n", new_count);
 	printf("-----------\n");
 
-	//Unsigned int test
+	// Unsigned int test
 	handshakes = 0;
 	printf("\ninput: handshakes for wins this year: %%u\n\n");
 	printf("original: ");
@@ -108,5 +108,29 @@ int main(void)
 	new_count = ft_printf("handshakes for wins this year: %u\n", handshakes);
 	printf("ftprintf: %d\n", new_count);
 	printf("-----------\n");
+
+	// Pointer test //TODO
+	printf("\ninput: handshakes for wins this year: %p\n\n", &handshakes);
+	printf("original: ");
+	original_count = printf("handshakes for wins this year: % k \n");
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("handshakes for wins this year: % k \n");
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	// Weird behaviour test
+	printf("\ninput: handshakes for wins this year: %%  (space after %%)\n\n");
+	printf("original: ");
+	original_count = printf("handshakes for wins this year: % k \n");
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf("handshakes for wins this year: % k \n");
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+	
+
 	return (0);
 }

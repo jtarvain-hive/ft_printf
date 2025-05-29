@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 15:33:18 by jtarvain          #+#    #+#             */
+/*   Updated: 2025/05/29 15:42:45 by jtarvain         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft.h"
 
@@ -25,33 +37,33 @@ void	parse_specifier(const char **str, int *count, va_list var)
 		ft_putchar_fd('%', 1);
 		(*count)++;
 	}
-		(*str)++;
+	(*str)++;
 }
 
 int	digit_length(int nbr)
 {
-    int space;
+	int	space;
 
-    space = 0;
-    if (nbr < 0)
-        nbr *= -1;
-    while (nbr)
-    {
-        nbr /= 10;
-        space++;
-    }
-    return (space);
+	space = 0;
+	if (nbr < 0)
+		nbr *= -1;
+	while (nbr)
+	{
+		nbr /= 10;
+		space++;
+	}
+	return (space);
 }
 
 int	unsigned_length(unsigned int nbr)
 {
-    unsigned int	space;
+	unsigned int	space;
 
-    space = 0;
-    while (nbr)
-    {
-        nbr /= 10;
-        space++;
-    }
-    return (space);
+	space = 0;
+	while (nbr)
+	{
+		nbr /= 10;
+		space++;
+	}
+	return (space);
 }

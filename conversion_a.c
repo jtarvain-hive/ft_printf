@@ -1,57 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion_a.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 15:32:21 by jtarvain          #+#    #+#             */
+/*   Updated: 2025/05/29 15:45:22 by jtarvain         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include "libft.h"
 
 void	convert_char(int *count, va_list var)
 {
-    char    c;
+	char	c;
 
-    c = (char)va_arg(var, int);
-    ft_putchar_fd(c, 1);
-    (*count)++;
+	c = (char)va_arg(var, int);
+	ft_putchar_fd(c, 1);
+	(*count)++;
 }
 
 void	convert_str(int *count, va_list var)
 {
-    char    *s;
+	char	*s;
 
-    s = va_arg(var, char *);
-    while (*s)
-    {
-        ft_putchar_fd(*s, 1);
-        (*count)++;
-        s++;
-    }
+	s = va_arg(var, char *);
+	while (*s)
+	{
+		ft_putchar_fd(*s, 1);
+		(*count)++;
+		s++;
+	}
 }
 
-void    convert_decimal(int *count, va_list var)
+void	convert_decimal(int *count, va_list var)
 {
-    int	number;
-    int	space;
+	int	number;
+	int	space;
 
-    number = va_arg(var, int);
-    space = digit_length(number);
-    if (number < 0)
-        (*count)++;
-    else if (space == 0)
-    {
-        (*count)++;
-    }
-    (*count) += space;
-    ft_putnbr_fd(number, 1);
+	number = va_arg(var, int);
+	space = digit_length(number);
+	if (number < 0)
+		(*count)++;
+	else if (space == 0)
+	{
+		(*count)++;
+	}
+	(*count) += space;
+	ft_putnbr_fd(number, 1);
 }
 
-// TODO: finish putunsigned
-void    convert_unsigned(int *count, va_list var)
+void	convert_unsigned(int *count, va_list var)
 {
-    unsigned int	number;
-    int				space;
+	unsigned int	number;
+	int				space;
 
-    number = va_arg(var, unsigned int);
-    space = unsigned_length(number);
-    if (space == 0)
-    {
-        (*count)++;
-    }
-    (*count) += space;
-    ft_putunsigned_fd(number, 1);
+	number = va_arg(var, unsigned int);
+	space = unsigned_length(number);
+	if (space == 0)
+	{
+		(*count)++;
+	}
+	(*count) += space;
+	ft_putunsigned_fd(number, 1);
 }
