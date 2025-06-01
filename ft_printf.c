@@ -26,12 +26,15 @@ int	ft_printf(const char *str, ...)
 		va_start(args, str);
 		while (*str)
 		{
-			if (*str == '%')
-				parse_specifier(&str, &count, args);
-			else
+			if (*str != '%')
 			{
 				ft_putchar_fd(*str++, 1);
 				count++;
+			}
+			else
+			{
+				str++;
+				parse_specifier(&str, &count, args);
 			}
 		}
 		va_end(args);

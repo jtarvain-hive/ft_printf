@@ -32,6 +32,7 @@ void	convert_hex(int *count, va_list var, const char c);
 void	convert_str(int *count, va_list var);
 void	convert_unsigned(int *count, va_list var);
 void	ft_putunsigned_fd(unsigned int n, int fd);
-void	ft_puthex(int *count, unsigned int number);
+void	ft_puthex(int *count, unsigned long number);
+void	ft_puthex_u(int *count, unsigned long number);
 
 #endif

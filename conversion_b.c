@@ -38,10 +38,22 @@ void	ft_putunsigned_fd(unsigned int n, int fd)
 
 void	convert_hex(int *count, va_list var, const char c)
 {
-	unsigned int	number;
+	unsigned long	number;
 
-	number = va_arg(var, unsigned int);
-	if (ft_islower(c))
+	number = va_arg(var, unsigned long);
+	if (c == 'p')
+	{
+		if (number == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		(*count) += 5;
+		return;
+	}
+		ft_putstr_fd("0x", 1);
+		(*count) += 2;
+		ft_puthex(count, number);
+	}
+	else if (ft_islower(c))
 		ft_puthex(count, number);
 	else
 		ft_puthex_u(count, number);
@@ -51,20 +63,21 @@ void	convert_hex(int *count, va_list var, const char c)
 
 void	convert_ptr(int *count, va_list var)
 {
-	unsigned int	number;
+	unsigned long	number;
 
-	number = va_arg(var, unsigned int);
+	number = va_arg(var, unsigned long);
 	if (number == 0)
 	{
 		ft_putstr_fd("(nil)", 1);
+		(*count) += 5;
 		return;
 	}
-	ft_putstr_fd("0x0", 1);
-	(*count) += 3;
+	ft_putstr_fd("0x", 1);
+	(*count) += 2;
 	ft_puthex(count, number);
 }
 
-void	ft_puthex(int *count, unsigned int number);
+void	ft_puthex(int *count, unsigned long number)
 {
 	if (number / 16 == 0)
 	{
@@ -80,7 +93,7 @@ void	ft_puthex(int *count, unsigned int number);
 	}
 }
 
-void	ft_puthex_u(int *count, unsigned int number)
+void	ft_puthex_u(int *count, unsigned long number)
 {
 	if (number / 16 == 0)
 	{
@@ -90,7 +103,7 @@ void	ft_puthex_u(int *count, unsigned int number)
 	}
 	else
 	{
-		ft_puthex(count, number / 16);
+		ft_puthex_u(count, number / 16);
 		ft_putchar_fd(HEX_U[number % 16], 1);
 		(*count)++;
 	}

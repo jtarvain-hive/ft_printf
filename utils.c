@@ -15,27 +15,28 @@
 
 void	parse_specifier(const char **str, int *count, va_list var)
 {
-	(*str)++;
 	if (**str == '\0')
 		return ;
 	else if (**str == 'c')
 		convert_char(count, var);
 	else if (**str == 's')
 		convert_str(count, var);
-	else if (**str == 'p')
-		return ;
 	else if (**str == 'd' || **str == 'i')
 		convert_decimal(count, var);
 	else if (**str == 'u')
 		convert_unsigned(count, var);
-	else if (**str == 'x')
+	else if (**str == 'x' || **str == 'X' || **str == 'p')
 		convert_hex(count, var, **str);
-	else if (**str == 'X')
-		return ;
+	else if (**str == '%')
+	{
+		ft_putchar_fd('%', 1);
+		(*count)++;
+	}
 	else
 	{
+		ft_putchar_fd('%', 1);
 		ft_putchar_fd(**str, 1);
-		(*count)++;
+		(*count) += 2;
 	}
 	(*str)++;
 }
