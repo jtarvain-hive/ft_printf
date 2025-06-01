@@ -18,15 +18,20 @@
 # include <unistd.h>
 # include <limits.h>
 
+# define HEX "0123456789abcdef"
+# define HEX_U "0123456789ABCDEF"
+
 int		ft_printf(const char *str, ...);
 int		digit_length(int nbr);
+int		unsigned_length(unsigned int nbr);
 void	parse_specifier(const char **str, int *count, va_list var);
 void	convert_char(int *count, va_list var);
 void	convert_decimal(int *count, va_list var);
 void	convert_ptr(int *count, va_list var);
+void	convert_hex(int *count, va_list var, const char c);
 void	convert_str(int *count, va_list var);
 void	convert_unsigned(int *count, va_list var);
 void	ft_putunsigned_fd(unsigned int n, int fd);
-int		unsigned_length(unsigned int nbr);
+void	ft_puthex(int *count, unsigned int number);
 
 #endif

@@ -36,7 +36,62 @@ void	ft_putunsigned_fd(unsigned int n, int fd)
 	}
 }
 
-void	convert_ptr(char *str, int *count, va_list var)
+void	convert_hex(int *count, va_list var, const char c)
 {
+	unsigned int	number;
 
+	number = va_arg(var, unsigned int);
+	if (ft_islower(c))
+		ft_puthex(count, number);
+	else
+		ft_puthex_u(count, number);
+}
+
+
+
+void	convert_ptr(int *count, va_list var)
+{
+	unsigned int	number;
+
+	number = va_arg(var, unsigned int);
+	if (number == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return;
+	}
+	ft_putstr_fd("0x0", 1);
+	(*count) += 3;
+	ft_puthex(count, number);
+}
+
+void	ft_puthex(int *count, unsigned int number);
+{
+	if (number / 16 == 0)
+	{
+		ft_putchar_fd(HEX[number % 16], 1);
+		(*count)++;
+		return ;
+	}
+	else
+	{
+		ft_puthex(count, number / 16);
+		ft_putchar_fd(HEX[number % 16], 1);
+		(*count)++;
+	}
+}
+
+void	ft_puthex_u(int *count, unsigned int number)
+{
+	if (number / 16 == 0)
+	{
+		ft_putchar_fd(HEX_U[number % 16], 1);
+		(*count)++;
+		return ;
+	}
+	else
+	{
+		ft_puthex(count, number / 16);
+		ft_putchar_fd(HEX_U[number % 16], 1);
+		(*count)++;
+	}
 }

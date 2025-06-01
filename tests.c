@@ -141,7 +141,6 @@ int main(void)
 	printf("ftprintf: %d\n", new_count);
 	printf("-----------\n");
 
-<<<<<<< Updated upstream
 	// Pointer test //TODO
 	printf("\ninput: handshakes for wins this year: %p\n\n", &handshakes);
 	printf("original: ");
@@ -164,9 +163,6 @@ int main(void)
 	printf("ftprintf: %d\n", new_count);
 	printf("-----------\n");
 	
-=======
-	// Pointer tests
->>>>>>> Stashed changes
 
 	return (0);
 }

@@ -29,12 +29,12 @@ void	parse_specifier(const char **str, int *count, va_list var)
 	else if (**str == 'u')
 		convert_unsigned(count, var);
 	else if (**str == 'x')
-		return ;
+		convert_hex(count, var, **str);
 	else if (**str == 'X')
 		return ;
-	else if (**str == '%')
+	else
 	{
-		ft_putchar_fd('%', 1);
+		ft_putchar_fd(**str, 1);
 		(*count)++;
 	}
 	(*str)++;
@@ -59,7 +59,6 @@ int	unsigned_length(unsigned int nbr)
 {
 	unsigned int	space;
 
-<<<<<<< Updated upstream
 	space = 0;
 	while (nbr)
 	{
@@ -68,13 +67,3 @@ int	unsigned_length(unsigned int nbr)
 	}
 	return (space);
 }
-=======
-    space = 0;
-    while (nbr)
-    {
-        nbr /= 10;
-        space++;
-    }
-    return	(space);
-}
->>>>>>> Stashed changes
