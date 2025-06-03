@@ -6,36 +6,40 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:32:21 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/05/29 15:45:22 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:28:22 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	convert_char(int *count, va_list var)
+int	convert_char(int *count, va_list var)
 {
 	char	c;
 
 	c = (char)va_arg(var, int);
-	ft_putchar_fd(c, 1);
+	if (ft_putchar_fd(c, 1) == -1)
+		return (-1);
 	(*count)++;
+	return (0);
 }
 
-void	convert_str(int *count, va_list var)
+int	convert_str(int *count, va_list var)
 {
 	char	*s;
 
 	s = va_arg(var, char *);
 	while (*s)
 	{
-		ft_putchar_fd(*s, 1);
+		if (ft_putchar_fd(*s, 1) == -1)
+			return (-1);
 		(*count)++;
 		s++;
 	}
+	return (0);
 }
 
-void	convert_decimal(int *count, va_list var)
+int	convert_decimal(int *count, va_list var)
 {
 	int	number;
 	int	space;
@@ -49,10 +53,12 @@ void	convert_decimal(int *count, va_list var)
 		(*count)++;
 	}
 	(*count) += space;
-	ft_putnbr_fd(number, 1);
+	if (ft_putnbr_fd(number, 1) == -1)
+		return (-1);
+	return (0);
 }
 
-void	convert_unsigned(int *count, va_list var)
+int	convert_unsigned(int *count, va_list var)
 {
 	unsigned int	number;
 	int				space;
@@ -64,5 +70,7 @@ void	convert_unsigned(int *count, va_list var)
 		(*count)++;
 	}
 	(*count) += space;
-	ft_putunsigned_fd(number, 1);
+	if (ft_putunsigned_fd(number, 1) == -1)
+		return (-1);
+	return (0);
 }

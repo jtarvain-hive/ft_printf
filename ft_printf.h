@@ -6,7 +6,7 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:33:03 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/05/29 15:41:22 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:28:52 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@
 int		ft_printf(const char *str, ...);
 int		digit_length(int nbr);
 int		unsigned_length(unsigned int nbr);
-void	parse_specifier(const char **str, int *count, va_list var);
-void	convert_char(int *count, va_list var);
-void	convert_decimal(int *count, va_list var);
-void	convert_ptr(int *count, va_list var);
-void	convert_hex(int *count, va_list var, const char c);
-void	convert_str(int *count, va_list var);
-void	convert_unsigned(int *count, va_list var);
-void	ft_putunsigned_fd(unsigned int n, int fd);
-void	ft_puthex(int *count, unsigned long number);
-void	ft_puthex_u(int *count, unsigned long number);
+int		parse_specifier(const char **str, int *count, va_list var);
+int		convert_char(int *count, va_list var);
+int		convert_decimal(int *count, va_list var);
+int		convert_ptr(int *count, va_list var);
+int		convert_hex(int *count, va_list var, const char c);
+int		convert_str(int *count, va_list var);
+int		convert_unsigned(int *count, va_list var);
+int		ft_putunsigned_fd(unsigned int n, int fd);
+int		ft_puthex(int *count, unsigned long number);
+int		ft_puthex_u(int *count, unsigned long number);
 
 #endif

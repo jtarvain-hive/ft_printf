@@ -6,27 +6,27 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:33:18 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/05/29 15:42:45 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:17:20 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	parse_specifier(const char **str, int *count, va_list var)
+int	parse_specifier(const char **str, int *count, va_list var)
 {
 	if (**str == '\0')
-		return ;
+		return (0);
 	else if (**str == 'c')
-		convert_char(count, var);
+		return (convert_char(count, var));
 	else if (**str == 's')
-		convert_str(count, var);
+		return (convert_str(count, var));
 	else if (**str == 'd' || **str == 'i')
-		convert_decimal(count, var);
+		return (convert_decimal(count, var));
 	else if (**str == 'u')
-		convert_unsigned(count, var);
+		return (convert_unsigned(count, var));
 	else if (**str == 'x' || **str == 'X' || **str == 'p')
-		convert_hex(count, var, **str);
+		return (convert_hex(count, var, **str));
 	else if (**str == '%')
 	{
 		ft_putchar_fd('%', 1);
