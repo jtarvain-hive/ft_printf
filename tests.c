@@ -144,7 +144,7 @@ int main(void)
 
 	// Pointer test
 	ptr = NULL;
-	printf("\ninput: handshakes for wins this year: %%p\n\n", &handshakes);
+	printf("\ninput: handshakes for wins this year: %%p\n\n");
 	printf("original: ");
 	original_count = printf("handshakes for wins this year: %p\n", ptr);
 	printf("original: %d\n", original_count);

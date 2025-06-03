@@ -12,30 +12,30 @@ CFLAGS := -Wall -Wextra -Werror -I./libft/
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	cp $< $@
-	ar rcs $@ $(OBJS)
+	@cp $< $@
+	@ar rcs $@ $(OBJS)
 
 $(LIBFT):
-	make -C libft/
+	@make -C libft/
 
 %.o: %.c $(HEADER)
-	cc $(CFLAGS) -c $< -o $@
+	@cc $(CFLAGS) -c $< -o $@
 
 test: $(NAME) tests.c
-	cc tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o tests
-	./tests
+	@cc tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o tests
+	@./tests
 
 debug: $(NAME) tests.c
-	gcc -g tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o debug
-	gdb debug
+	@gcc -g tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o debug
+	@gdb debug
 
 clean:
-	rm -f $(OBJS) tests debug
-	make -C libft/ clean
+	@rm -f $(OBJS) tests debug
+	@make -C libft/ clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C libft/ fclean
+	@rm -f $(NAME)
+	@make -C libft/ fclean
 
 re: fclean all
 

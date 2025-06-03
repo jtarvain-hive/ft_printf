@@ -6,7 +6,7 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:32:31 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/05/29 16:56:28 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/03 08:10:06 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	convert_hex(int *count, va_list var, const char c)
 	if (c == 'p')
 	{
 		if (number == 0)
-	{
-		ft_putstr_fd("(nil)", 1);
-		(*count) += 5;
-		return;
-	}
+		{
+			ft_putstr_fd("(nil)", 1);
+			(*count) += 5;
+			return ;
+		}
 		ft_putstr_fd("0x", 1);
 		(*count) += 2;
 		ft_puthex(count, number);
@@ -59,8 +59,6 @@ void	convert_hex(int *count, va_list var, const char c)
 		ft_puthex_u(count, number);
 }
 
-
-
 void	convert_ptr(int *count, va_list var)
 {
 	unsigned long	number;
@@ -70,7 +68,7 @@ void	convert_ptr(int *count, va_list var)
 	{
 		ft_putstr_fd("(nil)", 1);
 		(*count) += 5;
-		return;
+		return ;
 	}
 	ft_putstr_fd("0x", 1);
 	(*count) += 2;
