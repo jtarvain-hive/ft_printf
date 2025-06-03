@@ -13,34 +13,6 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int	parse_specifier(const char **str, int *count, va_list var)
-{
-	if (**str == '\0')
-		return (0);
-	else if (**str == 'c')
-		return (convert_char(count, var));
-	else if (**str == 's')
-		return (convert_str(count, var));
-	else if (**str == 'd' || **str == 'i')
-		return (convert_decimal(count, var));
-	else if (**str == 'u')
-		return (convert_unsigned(count, var));
-	else if (**str == 'x' || **str == 'X' || **str == 'p')
-		return (convert_hex(count, var, **str));
-	else if (**str == '%')
-	{
-		ft_putchar_fd('%', 1);
-		(*count)++;
-	}
-	else
-	{
-		ft_putchar_fd('%', 1);
-		ft_putchar_fd(**str, 1);
-		(*count) += 2;
-	}
-	(*str)++;
-}
-
 int	digit_length(int nbr)
 {
 	int	space;
@@ -67,4 +39,42 @@ int	unsigned_length(unsigned int nbr)
 		space++;
 	}
 	return (space);
+}
+
+int	ft_putunsigned_fd(unsigned int n, int fd)
+{
+	if (fd < 0)
+		return (-1);
+	if (n == 0)
+		return (ft_putchar_fd('0', 1));
+	if (n < 10)
+	{
+		return (ft_putchar_fd(n + '0', fd));
+	}
+	else
+	{
+		if (ft_putunsigned_fd(n / 10, fd) == -1)
+			return (-1);
+		if (ft_putchar_fd((n % 10) + '0', fd) == -1)
+			return (-1);
+	}
+	return (0);
+}
+
+int	ft_putptr(int *count, uintptr_t ptr)
+{
+	if (ptr / 16 == 0)
+	{
+		(*count)++;
+		return (ft_putchar_fd(HEX[ptr % 16], 1));
+	}
+	else
+	{
+		if (ft_putptr(ptr / 16, 1) == -1)
+			return (-1);
+		if (ft_putchar_fd(HEX[ptr % 16], 1) == -1)
+			return (-1);
+		(*count)++;
+	}
+	return (0);
 }

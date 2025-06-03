@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
 # include <limits.h>
 
@@ -24,14 +25,15 @@
 int		ft_printf(const char *str, ...);
 int		digit_length(int nbr);
 int		unsigned_length(unsigned int nbr);
-int		parse_specifier(const char **str, int *count, va_list var);
-int		convert_char(int *count, va_list var);
-int		convert_decimal(int *count, va_list var);
-int		convert_ptr(int *count, va_list var);
-int		convert_hex(int *count, va_list var, const char c);
-int		convert_str(int *count, va_list var);
-int		convert_unsigned(int *count, va_list var);
+int		parser(const char **str, int *count, va_list var);
+int		convert_char(int *count, int n);
+int		convert_decimal(int *count, int n);
+int		convert_ptr(int *count, uintptr_t ptr);
+int		convert_hex(int *count, unsigned long n, const char c);
+int		convert_str(int *count, char * str);
+int		convert_unsigned(int *count, unsigned int n);
 int		ft_putunsigned_fd(unsigned int n, int fd);
+int		ft_putptr(int *count, uintptr_t ptr);
 int		ft_puthex(int *count, unsigned long number);
 int		ft_puthex_u(int *count, unsigned long number);
 

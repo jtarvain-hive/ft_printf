@@ -23,15 +23,16 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		if (*str != '%')
+		if (*str == '%' && (*str + 1) != '\0')
 		{
-			check = ft_putchar_fd(*str++, 1);
-			count++;
+			str++;
+			check = parser(&str, &count, args);
 		}
 		else
 		{
+			check = ft_putchar_fd(*str++, 1);
+			count++;
 			str++;
-			check = parse_specifier(&str, &count, args);
 		}
 		if (check == -1)
 			break ;
@@ -40,4 +41,26 @@ int	ft_printf(const char *str, ...)
 	if (check == -1)
 		return (-1);
 	return (count);
+}
+
+int	parser(const char **str, int *count, va_list var)
+{
+	if (**str == 'c')
+		return (convert_char(count, va_arg(var, int)));
+	else if (**str == 's')
+		return (convert_str(count, va_arg(var, char *)));
+	else if (**str == 'd' || **str == 'i')
+		return (convert_decimal(count, va_arg(var, int)));
+	else if (**str == 'u')
+		return (convert_unsigned(count, va_arg(var, unsigned int)));
+	else if (**str == 'p')
+		return (convert_ptr(count, va_arg(var, uintptr_t)));
+	else if (**str == 'x' || **str == 'X')
+		return (convert_hex(count, va_arg(var, unsigned long), **str));
+	else if (**str == '%')
+	{
+		ft_putchar_fd('%', 1);
+		(*count)++;
+	}
+	return (0);
 }

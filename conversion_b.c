@@ -13,34 +13,18 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_putunsigned_fd(unsigned int n, int fd)
+int	convert_ptr(int *count, uintptr_t ptr)
 {
-	if (fd < 0)
+	if (ptr == NULL)
+		return (ft_putstr_fd("(nil)", 1));
+	if (ft_putstr_fd("0x", 1) == -1)
 		return (-1);
-	if (n == 0)
-	{
-		if (write(fd, "0", 1) == -1)
-			return (-1);
-		return (0);
-	}
-	if (n < 10)
-	{
-		return (ft_putchar_fd(n + '0', fd));
-	}
-	else
-	{
-		if (ft_putunsigned_fd(n / 10, fd) == -1)
-			return (-1);
-		if (ft_putchar_fd((n % 10) + '0', fd) == -1)
-			return (-1);
-	}
+	(*count) += 2;
+	return (ft_putptr(count, ptr));
 }
 
-int	convert_hex(int *count, va_list var, const char c)
+int	convert_hex(int *count, unsigned long number, const char c)
 {
-	unsigned long	number;
-
-	number = va_arg(var, unsigned long);
 	if (ft_islower(c))
 		return (ft_puthex(count, number));
 	else
@@ -51,10 +35,8 @@ int	ft_puthex(int *count, unsigned long number)
 {
 	if (number / 16 == 0)
 	{
-		if (ft_putchar_fd(HEX[number % 16], 1) == -1)
-			return (-1);
 		(*count)++;
-		return ;
+		return (ft_putchar_fd(HEX[number % 16], 1));
 	}
 	else
 	{
@@ -71,10 +53,8 @@ int	ft_puthex_u(int *count, unsigned long number)
 {
 	if (number / 16 == 0)
 	{
-		if (ft_putchar_fd(HEX_U[number % 16], 1) == -1)
-			return (-1);
 		(*count)++;
-		return ;
+		return (ft_putchar_fd(HEX_U[number % 16], 1));
 	}
 	else
 	{
@@ -85,9 +65,4 @@ int	ft_puthex_u(int *count, unsigned long number)
 		(*count)++;
 	}
 	return (0);
-}
-
-int	putptr(int *count, uintptr_t ptr)
-{
-	
 }
