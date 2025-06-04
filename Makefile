@@ -22,11 +22,11 @@ $(LIBFT):
 	@cc $(CFLAGS) -c $< -o $@
 
 test: $(NAME) tests.c
-	@cc tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o tests
+	@cc tests.c -I. -I./libft -L. -lftprintf -o tests
 	@./tests
 
 debug: $(NAME) tests.c
-	@gcc -g tests.c -I. -I./libft -L. -L./libft -lftprintf -lft -o debug
+	@gcc -g tests.c -I. -I./libft -L.  -lftprintf -o debug
 	@gdb debug
 
 clean:
