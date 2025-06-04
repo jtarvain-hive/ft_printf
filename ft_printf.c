@@ -27,12 +27,12 @@ int	ft_printf(const char *str, ...)
 		{
 			str++;
 			check = parser(&str, &count, args);
+			str++;
 		}
 		else
 		{
 			check = ft_putchar_fd(*str++, 1);
 			count++;
-			str++;
 		}
 		if (check == -1)
 			break ;
@@ -54,9 +54,9 @@ int	parser(const char **str, int *count, va_list var)
 	else if (**str == 'u')
 		return (convert_unsigned(count, va_arg(var, unsigned int)));
 	else if (**str == 'p')
-		return (convert_ptr(count, va_arg(var, uintptr_t)));
+		return (convert_ptr(count, va_arg(var, void *)));
 	else if (**str == 'x' || **str == 'X')
-		return (convert_hex(count, va_arg(var, unsigned long), **str));
+		return (convert_hex(count, va_arg(var, unsigned int), **str));
 	else if (**str == '%')
 	{
 		ft_putchar_fd('%', 1);

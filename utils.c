@@ -61,7 +61,7 @@ int	ft_putunsigned_fd(unsigned int n, int fd)
 	return (0);
 }
 
-int	ft_putptr(int *count, uintptr_t ptr)
+int	ft_putptr(uintptr_t ptr, int *count)
 {
 	if (ptr / 16 == 0)
 	{
@@ -70,7 +70,7 @@ int	ft_putptr(int *count, uintptr_t ptr)
 	}
 	else
 	{
-		if (ft_putptr(ptr / 16, 1) == -1)
+		if (ft_putptr(ptr / 16, count) == -1)
 			return (-1);
 		if (ft_putchar_fd(HEX[ptr % 16], 1) == -1)
 			return (-1);

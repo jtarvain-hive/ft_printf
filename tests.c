@@ -186,13 +186,13 @@ int main(void)
     printf("ftprintf: %d\n", new_count);
     printf("-----------\n");
 
-    printf("\ninput: hex value: %%x\n\n");
+    printf("\ninput: hex value: %%x %%x\n\n");
     printf("original: ");
-    original_count = printf("hex value: %x\n", 4294967295U);
+    original_count = printf("hex value: %x %x\n", 4294967295U, 3294967295U);
     printf("original: %d\n", original_count);
     printf("ftprintf: ");
     fflush(stdout);
-    new_count = ft_printf("hex value: %x\n", 4294967295U);
+    new_count = ft_printf("hex value: %x %x\n", 4294967295U, 3294967295U);
     printf("ftprintf: %d\n", new_count);
     printf("-----------\n");
 

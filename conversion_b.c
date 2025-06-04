@@ -13,17 +13,17 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int	convert_ptr(int *count, uintptr_t ptr)
+int	convert_ptr(int *count, void *p)
 {
-	if (ptr == NULL)
+	if (p == NULL)
 		return (ft_putstr_fd("(nil)", 1));
 	if (ft_putstr_fd("0x", 1) == -1)
 		return (-1);
 	(*count) += 2;
-	return (ft_putptr(count, ptr));
+	return (ft_putptr((uintptr_t)p, count));
 }
 
-int	convert_hex(int *count, unsigned long number, const char c)
+int	convert_hex(int *count, unsigned int number, const char c)
 {
 	if (ft_islower(c))
 		return (ft_puthex(count, number));
@@ -31,7 +31,7 @@ int	convert_hex(int *count, unsigned long number, const char c)
 		return (ft_puthex_u(count, number));
 }
 
-int	ft_puthex(int *count, unsigned long number)
+int	ft_puthex(int *count, unsigned int number)
 {
 	if (number / 16 == 0)
 	{
@@ -49,7 +49,7 @@ int	ft_puthex(int *count, unsigned long number)
 	return (0);
 }
 
-int	ft_puthex_u(int *count, unsigned long number)
+int	ft_puthex_u(int *count, unsigned int number)
 {
 	if (number / 16 == 0)
 	{

@@ -28,13 +28,13 @@ int		unsigned_length(unsigned int nbr);
 int		parser(const char **str, int *count, va_list var);
 int		convert_char(int *count, int n);
 int		convert_decimal(int *count, int n);
-int		convert_ptr(int *count, uintptr_t ptr);
-int		convert_hex(int *count, unsigned long n, const char c);
+int		convert_ptr(int *count, void *p);
+int		convert_hex(int *count, unsigned int n, const char c);
 int		convert_str(int *count, char * str);
 int		convert_unsigned(int *count, unsigned int n);
 int		ft_putunsigned_fd(unsigned int n, int fd);
-int		ft_putptr(int *count, uintptr_t ptr);
-int		ft_puthex(int *count, unsigned long number);
-int		ft_puthex_u(int *count, unsigned long number);
+int		ft_putptr(uintptr_t ptr, int *count);
+int		ft_puthex(int *count, unsigned int number);
+int		ft_puthex_u(int *count, unsigned int number);
 
 #endif
