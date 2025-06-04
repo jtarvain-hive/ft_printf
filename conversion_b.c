@@ -16,7 +16,10 @@
 int	convert_ptr(int *count, void *p)
 {
 	if (p == NULL)
-		return (ft_putstr_fd("(nil)", 1));
+	{
+		(void)ft_putstr_fd("(nil)", 1);
+		return (-1);
+	}
 	if (ft_putstr_fd("0x", 1) == -1)
 		return (-1);
 	(*count) += 2;
