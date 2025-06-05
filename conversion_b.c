@@ -6,19 +6,18 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:32:31 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/06/03 13:42:03 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:44:58 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	convert_ptr(int *count, void *p)
 {
 	if (p == NULL)
 	{
-		(void)ft_putstr_fd("(nil)", 1);
-		return (-1);
+		(*count) += 5;
+		return (ft_putstr_fd("(nil)", 1));
 	}
 	if (ft_putstr_fd("0x", 1) == -1)
 		return (-1);

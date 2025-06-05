@@ -6,12 +6,11 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:33:18 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/06/03 13:17:20 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/05 15:45:04 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	digit_length(int nbr)
 {

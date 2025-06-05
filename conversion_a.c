@@ -6,18 +6,17 @@
 /*   By: jtarvain <jtarvain@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:32:21 by jtarvain          #+#    #+#             */
-/*   Updated: 2025/06/03 13:28:22 by jtarvain         ###   ########.fr       */
+/*   Updated: 2025/06/05 16:09:58 by jtarvain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	convert_char(int *count, int n)
 {
 	char	c;
 
-	c = (char)n;
+	c = n;
 	if (ft_putchar_fd(c, 1) == -1)
 		return (-1);
 	(*count)++;
@@ -26,6 +25,11 @@ int	convert_char(int *count, int n)
 
 int	convert_str(int *count, char *str)
 {
+	if (!str)
+	{
+		(*count) += 6;
+		return (ft_putstr_fd("(null)", 1));
+	}
 	while (*str)
 	{
 		if (ft_putchar_fd(*str, 1) == -1)

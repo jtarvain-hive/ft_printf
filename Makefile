@@ -26,7 +26,7 @@ test: $(NAME) tests.c
 	@./tests
 
 debug: $(NAME) tests.c
-	@gcc -g tests.c -I. -I./libft -L.  -lftprintf -o debug
+	@gcc -g tests.c -I. -I./libft -L. -lftprintf -o debug
 	@gdb debug
 
 clean:

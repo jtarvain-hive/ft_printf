@@ -247,6 +247,28 @@ int main(void)
     printf("ftprintf: %d\n", new_count);
     printf("-----------\n");
 
+	ptr = NULL;
+	printf("\ninput: %%p %%p \n\n");
+	printf("original: ");
+	original_count = printf(" %p %p \n", 0, 0);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf(" %p %p \n", 0, 0);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
+	printf("-----------");
+	//printf("\ninput:  NULL %s NULL \n\n");
+	printf("original: ");
+	original_count = printf(" NULL %s NULL ", NULL);
+	printf("original: %d\n", original_count);
+	printf("ftprintf: ");
+	fflush(stdout);
+	new_count = ft_printf(" NULL %s NULL ", NULL);
+	printf("ftprintf: %d\n", new_count);
+	printf("-----------\n");
+
 	// // Weird behaviour test
 	// printf("\ninput: handshakes for wins this year: %%  (space after %%)\n\n");
 	// printf("original: ");
